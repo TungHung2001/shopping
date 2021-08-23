@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Product List By Category {% endblock %}
+
+{% block body %}
+
+<div class="container mt-3">
+    {% for flash in app.flashes("Success") %}
+        <p class="alert alert-primary"> {{ flash }} </p>
+    {% endfor %}
+    {% for flash in app.flashes("Error") %}
+        <p class="alert alert-danger"> {{ flash }} </p>
+    {% endfor %}
+</div>
+<a class="btn btn-warning" href="{{ path ('product_create') }}">Create Product</a>
+<div class="container">
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product Name</th>
+           
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for product in Category.product %}
+        <tr>
+            <td scope="row">{{ product.id }}</td>
+            <td scope="row">{{ product.name }}</td>
+            
+            <td scope="row"> 
+                <a class="btn btn-warning" href="{{ path ( 'product_detail' , {'id' : product.id } ) }}">Detail</a>
+          
+                <a class="btn btn-warning" href="{{ path ( 'product_update' , {'id' : product.id } ) }}">Update</a>
+                <a class="btn btn-warning" href="{{ path ( 'product_delete' , {'id' : product.id } ) }}"
+                                          onclick = "return confirm('Are you sure to delete ?')"
+                >Delete</a>
+            </td>
+        </tr> 
+    {% endfor %}
+    </tbody>
+</table>
+<div class="d-flex justify-content-center">
+
+</div>
+</div>
+
+{% endblock %}

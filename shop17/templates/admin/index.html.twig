@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+{# <div class="container">
+    {% for message in app.flashes("Info") %}
+        <p class="alert alert-primary">{{ flash }}</p>
+    {% endfor %}
+
+</div> #}
+<div class="container mt-3">
+    {% for flash in app.flashes("Success") %}
+        <p class="alert alert-primary"> {{ flash }} </p>
+    {% endfor %}
+    {% for flash in app.flashes("Error") %}
+        <p class="alert alert-danger"> {{ flash }} </p>
+    {% endfor %}
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary" href="{{ path('product_create') }}">Create </a>
+<style>
+
+</style>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+               
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for Product in Products %}
+              <tr>
+                <td scope="row">{{Product.id}}</td>
+                <td scope="row">{{Product.name}}</td>
+                
+                <td scope="row">
+                    <a class="btn btn-warning" href="{{ path('product_detail', {'id':Product.id} ) }}">View Detail</a> 
+                    <a class="btn btn-warning" href="{{ path('product_update', {'id':Product.id} ) }}">Update</a> 
+                    <a class="btn btn-warning" href="{{ path('product_delete', {'id':Product.id} ) }}">Delete</a> 
+                </td>
+            </tr>
+        {% endfor %}
+          
+            <tr>
+                <td class="col"></td>
+                <td class="col"></td>
+                <td class="col"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+

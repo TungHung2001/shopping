@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1 class="mt-3 mb-4">Products</h1>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    
+                    <img src="{{ asset('images/product/' ~ product.image) }}" alt="{{ product.name }}" class="card-img-top"></img>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                       
+                        
+                        <p class="card-text">{{ product.description }}</p>
+                        <div class="d-flex justify-content-between align-item-center">
+                            <a href="{{ path('product.detail', {id: product.id}) }}" class="btn btn-warning">View details</a>
+                            
+                            <span class="h5 mt-auto">{{ product.price }} $</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+

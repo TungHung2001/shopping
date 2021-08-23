@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block body %}
+
+<style>
+
+</style>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Image</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+       
+              <tr>
+                <td scope="row">{{Product.id}}</td>
+                <td scope="row">{{Product.name}}</td>
+                
+                <td scope="row">{{Product.description}}</td>
+                <td scope="row">{{Product.price}}</td>
+                
+                <td scope="row">
+                    <a href="{{path('category_detail',{'id' : Product.Category.id})}}">
+                            {{Product.Category.name}}
+                    </a>
+                </td>
+                 {# <td scope="row">
+                    {% for a in Product.category %}
+                        <a href="{{path('category_detail',{'id': a.id})}}">
+                            {{a.name}}
+                        </a>
+                    {% endfor %}
+                 </td> #}
+
+                <td scope="row">
+                    <img src="{{ asset('images/product/' ~ Product.image) }}" width="100px" height="120px"></img>
+                </td>
+                <td scope="row">
+                   
+                    <a class="btn btn-warning" href="{{ path('product_update', {'id':Product.id} ) }}">Update</a> 
+                    <a class="btn btn-warning" href="{{ path('product_delete', {'id':Product.id} ) }}">Delete</a> 
+                </td>
+            </tr>
+        
+          
+            <tr>
+                <td class="col"></td>
+                <td class="col"></td>
+                <td class="col"></td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

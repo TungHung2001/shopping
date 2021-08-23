@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Update {% endblock %}
+
+{% block body %}
+  <div class="container-fluid mt-1">
+      <h2 class="text-center mt-4">Update Product</h2>
+      <div class="col-md-5"></div>
+          {{ form_start (form) }}
+              <div class="form-group">
+                  <p class="font-weight-normal"> Name </p>
+                  {{ form_widget (form.Name, {'attr': {'class' : 'form-control'}}) }}
+              </div>
+
+              <div class="form-group">
+                  <p class="font-weight-normal"> Description </p>
+                  {{ form_widget (form.Description, {'attr': {'class' : 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  <p class="font-weight-normal"> Price </p>
+                  {{ form_widget (form.Price, {'attr': {'class' : 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  <p class="font-weight-bold"> Image </p>
+                  {{ form_widget (form.Image, {'attr': {'class' : 'form-control'}}) }}
+              </div>
+              <div class="form-group">
+                  <p class="font-weight-bold"> Category </p>
+                  {{ form_widget (form.Category, {'attr': {'class' : 'form-control'}}) }}
+              </div>
+                <div class="form-group text-center mt-3">
+                  <button class="btn btn-danger">Update</button>
+              </div>
+          {{ form_end (form)}}
+  </div>   
+{% endblock %}
